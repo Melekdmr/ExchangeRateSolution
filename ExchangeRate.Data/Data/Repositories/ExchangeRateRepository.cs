@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExchangeRate.Core.Dtos
+namespace ExchangeRate.Data.Data.Repositories
 {
-    public class ExchangeRateDto
+    internal class ExchangeRateRepository
     {
     }
 }
