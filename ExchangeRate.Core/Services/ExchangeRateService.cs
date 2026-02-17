@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExchangeRate.Data.Data.Helpers
+namespace ExchangeRate.Core.Services
 {
-    internal class DbHelpers
+    internal class ExchangeRateService
     {
     }
 }

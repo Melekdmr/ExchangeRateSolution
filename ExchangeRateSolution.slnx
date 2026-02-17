@@ -1,5 +1,6 @@
 <Solution>
-  <Project Path="ExchangeRate.Core/ExchangeRate.Core.csproj" />
-  <Project Path="ExchangeRate.Data/ExchangeRate.Data.csproj" />
-  <Project Path="ExchangeRate.Worker/ExchangeRate.Worker.csproj" />
+  <Project Path="ExchangeRate.Core/ExchangeRate.Core.csproj" Id="1871fca0-3340-4c71-bb86-42fd3f2dd8ec" />
+  <Project Path="ExchangeRate.Data/ExchangeRate.Data.csproj" Id="48a9551f-836e-41b9-a81d-921570c4b6d0" />
+  <Project Path="ExchangeRate.Service/ExchangeRate.Service.csproj" Id="e545d8b5-1a4d-434d-aece-082ac2ec44e8" />
+  <Project Path="ExchangeTransferWinService/ExchangeTransferWinService.csproj" Id="25731867-a9b4-464f-9fed-04049f912c98" />
 </Solution>
