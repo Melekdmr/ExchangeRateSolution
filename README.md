@@ -93,22 +93,6 @@ ExchangeRate_Staging (Temp)
 ExchangeRate (Main Table)
 ```
 
-### MERGE Logic
-```sql
-MERGE ExchangeRate AS target
-USING ExchangeRate_Staging AS source
-ON target.CurrencyCode = source.CurrencyCode 
-   AND target.RateDate = source.RateDate
-
-WHEN MATCHED AND target.Rate <> source.Rate THEN
-    UPDATE SET 
-        target.Rate = source.Rate,
-        target.UpdatedAt = GETDATE()
-
-WHEN NOT MATCHED BY TARGET THEN
-    INSERT (CurrencyCode, Rate, RateDate, CreatedAt)
-    VALUES (source.CurrencyCode, source.Rate, source.RateDate, GETDATE());
-```
 
 ## 🚀 Installation
 
@@ -166,42 +150,16 @@ Edit `App.config`:
 </appSettings>
 ```
 
-### 3. Build & Deploy
-```cmd
-# Build solution
-msbuild ExchangeRateSolution.sln /p:Configuration=Release
 
-# Copy to service directory
-xcopy "ExchangeTransferWinService\bin\Release\*.*" "C:\Services\ExchangeRateService\" /Y
-```
 
-### 4. Install Windows Service
+### 3. Build & Service Install
 ```cmd
 # Run CMD as Administrator
 sc create ExchangeRateService binPath="C:\Services\ExchangeRateService\ExchangeTransferWinService.exe" start=auto
 sc start ExchangeRateService
 ```
 
-## 💻 Usage
 
-### Service Management
-```cmd
-# Check status
-sc query ExchangeRateService
-
-# Start/Stop
-sc start ExchangeRateService
-sc stop ExchangeRateService
-
-# View logs
-notepad C:\Services\ExchangeRateService\logs\log_YYYYMMDD.txt
-```
-
-### Manual Trigger (For Testing)
-```csharp
-var service = new ExchangeRateService();
-service.FetchAndSyncRates();
-```
 
 ## 🧪 Testing
 ```sql
