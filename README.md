@@ -266,36 +266,6 @@ GROUP BY CurrencyCode, RateDate
 HAVING COUNT(*) > 1
 ```
 
-## 🎯 Design Principles
-
-### Layered Architecture
-- **Core**: Domain entities, interfaces (no dependencies)
-- **Data**: Repository implementations (depends on Core)
-- **Service**: Business logic (depends on Core, Data)
-- **WinService**: Background worker (depends on Service)
-
-### Repository Pattern
-```csharp
-public interface IExchangeRateRepository
-{
-    Task<IEnumerable<ExchangeRate>> GetAllAsync();
-    Task<ExchangeRate> GetByIdAsync(int id);
-    Task AddAsync(ExchangeRate entity);
-    Task UpdateAsync(ExchangeRate entity);
-    Task BulkInsertToStagingAsync(IEnumerable<ExchangeRate> rates);
-    Task MergeStagingToMainAsync();
-}
-```
-
-### Service Layer
-```csharp
-public interface IExchangeRateService
-{
-    Task<IEnumerable<ExchangeRateDto>> FetchRatesFromApiAsync();
-    Task ProcessAndSyncRatesAsync();
-    Task<IEnumerable<ExchangeRateDto>> GetLatestRatesAsync();
-}
-```
 
 ## 🔐 Security
 
@@ -305,13 +275,7 @@ public interface IExchangeRateService
 - ✅ Transaction rollback on errors
 - ✅ Encrypted connection strings (optional)
 
-## 📊 Performance Tips
 
-- Use bulk insert for staging table
-- Index on `CurrencyCode` and `RateDate`
-- Schedule during off-peak hours
-- Monitor transaction log size
-- Archive old exchange rate data
 
 
 ## 📞 Contact
