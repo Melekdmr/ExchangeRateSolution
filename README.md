@@ -11,7 +11,7 @@
 **ExchangeRateSolution** is a modular, layered .NET solution designed for working with exchange rate data. The project includes domain layer, data access layer, service layer, and Windows Service component.
 
 ### Key Goals
-- Fetch exchange rate data from external source
+- Fetch exchange rate data from external sources
 - Write to staging tables for validation
 - Safely transfer to main tables using MERGE
 - Automated background data synchronization
